@@ -94,8 +94,8 @@ export default function App() {
             <button
               onClick={() => setView('extractor')}
               className={`flex items-center space-x-2 px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${view === 'extractor'
-                  ? 'bg-white text-zinc-900 shadow-sm ring-1 ring-black/5'
-                  : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200/50'
+                ? 'bg-white text-zinc-900 shadow-sm ring-1 ring-black/5'
+                : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200/50'
                 }`}
             >
               <LayoutDashboard className="w-4 h-4" />
@@ -104,8 +104,8 @@ export default function App() {
             <button
               onClick={() => setView('favorites')}
               className={`flex items-center space-x-2 px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${view === 'favorites'
-                  ? 'bg-white text-zinc-900 shadow-sm ring-1 ring-black/5'
-                  : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200/50'
+                ? 'bg-white text-zinc-900 shadow-sm ring-1 ring-black/5'
+                : 'text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200/50'
                 }`}
             >
               <Bookmark className="w-4 h-4" />
@@ -161,8 +161,8 @@ export default function App() {
                       <button
                         onClick={toggleFavorite}
                         className={`p-2 rounded-xl transition-all ${isCurrentFavorite
-                            ? 'bg-zinc-900 text-white shadow-sm'
-                            : 'bg-white text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 border border-zinc-200'
+                          ? 'bg-rose-50 text-rose-500 shadow-sm border border-rose-100'
+                          : 'bg-white text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 border border-zinc-200'
                           }`}
                         title={isCurrentFavorite ? "取消收藏" : "收藏"}
                       >
