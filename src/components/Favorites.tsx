@@ -25,47 +25,54 @@ export function Favorites({ favorites, onSelect, onRemove }: FavoritesProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {favorites.map((design) => (
-        <div 
-          key={design.id} 
+        <div
+          key={design.id}
           className="group relative bg-white rounded-2xl border border-zinc-200/80 shadow-sm overflow-hidden hover:shadow-md hover:border-zinc-300 transition-all cursor-pointer animate-in fade-in zoom-in-95 duration-300"
           onClick={() => onSelect(design)}
         >
           <div className="aspect-video w-full overflow-hidden bg-zinc-100 relative border-b border-zinc-100">
-            <img 
-              src={design.imageUrl} 
-              alt="设计预览" 
+            <img
+              src={design.imageUrl}
+              alt="设计预览"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-zinc-900/0 group-hover:bg-zinc-900/5 transition-colors" />
           </div>
-          
+
           <div className="p-5">
-            <div className="flex flex-wrap gap-1.5 mb-4">
-              {design.keywords.slice(0, 3).map((kw, i) => (
-                <span key={i} className="px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-md text-[10px] font-bold uppercase tracking-wider border border-zinc-200/50">
-                  {kw}
+            <div className="flex justify-between items-start mb-4">
+              <div className="flex flex-wrap gap-1.5 flex-1 mr-2">
+                {design.keywords.slice(0, 3).map((kw, i) => (
+                  <span key={i} className="px-2 py-0.5 bg-zinc-100 text-zinc-600 rounded-md text-[10px] font-bold uppercase tracking-wider border border-zinc-200/50">
+                    {kw}
+                  </span>
+                ))}
+              </div>
+              {design.styleName && (
+                <span className="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-md text-[10px] font-bold tracking-wider border border-indigo-100/50 shrink-0">
+                  {design.styleName}
                 </span>
-              ))}
+              )}
             </div>
-            
+
             <div className="flex items-center space-x-2 mb-4">
               {design.colors.slice(0, 5).map((color, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="w-5 h-5 rounded-full border border-black/10 shadow-inner"
                   style={{ backgroundColor: color.hex }}
                   title={color.name}
                 />
               ))}
             </div>
-            
+
             <p className="text-sm text-zinc-600 line-clamp-2 leading-relaxed">
               {design.summary}
             </p>
           </div>
 
           <div className="absolute top-3 right-3 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button 
+            <button
               onClick={(e) => {
                 e.stopPropagation();
                 onRemove(design.id);

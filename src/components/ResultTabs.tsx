@@ -42,17 +42,16 @@ export function ResultTabs({ design }: ResultTabsProps) {
     <div className="flex flex-col h-full bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
       <div className="flex border-b border-slate-200 p-2 gap-2 bg-slate-50/50">
         {[
-          { id: 'tokens', label: '设计总结' },
-          { id: 'prompt', label: '设计提示词' }
+          { id: 'tokens', label: '视觉解析' },
+          { id: 'prompt', label: '代码复现' }
         ].map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex-1 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
-              activeTab === tab.id
-                ? 'bg-white text-indigo-600 shadow-sm border border-slate-200/60'
-                : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100 border border-transparent'
-            }`}
+            className={`flex-1 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${activeTab === tab.id
+              ? 'bg-white text-indigo-600 shadow-sm border border-slate-200/60'
+              : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100 border border-transparent'
+              }`}
           >
             {tab.label}
           </button>
@@ -62,7 +61,7 @@ export function ResultTabs({ design }: ResultTabsProps) {
       <div className="flex-1 overflow-y-auto p-6">
         {activeTab === 'tokens' && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            
+
             {/* Summary Section */}
             <div className="relative bg-slate-50 p-5 rounded-xl border border-slate-200 mb-8">
               <div className="flex justify-between items-start mb-3">
@@ -74,7 +73,7 @@ export function ResultTabs({ design }: ResultTabsProps) {
                     </span>
                   )}
                 </div>
-                <button 
+                <button
                   onClick={handleCopyAllTokens}
                   className="flex items-center space-x-1.5 px-2.5 py-1.5 bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-md text-xs font-medium transition-colors shadow-sm flex-shrink-0"
                   title="复制全部 JSON"
@@ -104,13 +103,13 @@ export function ResultTabs({ design }: ResultTabsProps) {
                   const id = `color-${i}`;
                   const isCopied = copiedItem === id;
                   return (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       onClick={() => handleCopyItem(color.hex, id)}
                       className="group relative flex flex-col p-3 rounded-xl border border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md transition-all cursor-pointer overflow-hidden"
                     >
-                      <div 
-                        className="w-full h-12 rounded-lg shadow-inner border border-black/5 mb-3 flex-shrink-0" 
+                      <div
+                        className="w-full h-12 rounded-lg shadow-inner border border-black/5 mb-3 flex-shrink-0"
                         style={{ backgroundColor: color.hex }}
                       />
                       <div className="flex flex-col min-w-0">
@@ -118,7 +117,7 @@ export function ResultTabs({ design }: ResultTabsProps) {
                         <span className="text-xs font-mono text-slate-500 mt-0.5">{color.hex}</span>
                         <span className="text-[10px] text-slate-400 mt-1 line-clamp-2 leading-tight" title={color.usage}>{color.usage}</span>
                       </div>
-                      
+
                       {/* Hover/Active Overlay */}
                       <div className={`absolute inset-0 bg-white/90 backdrop-blur-[1px] flex items-center justify-center transition-opacity duration-200 ${isCopied ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                         {isCopied ? (
@@ -135,7 +134,7 @@ export function ResultTabs({ design }: ResultTabsProps) {
 
             {/* Typography & Visual Attributes Bento Grid */}
             <div className="flex flex-col gap-8">
-              
+
               {/* Typography */}
               <div>
                 <div className="flex items-center mb-4">
@@ -146,8 +145,8 @@ export function ResultTabs({ design }: ResultTabsProps) {
                     const id = `font-${i}`;
                     const isCopied = copiedItem === id;
                     return (
-                      <div 
-                        key={i} 
+                      <div
+                        key={i}
                         onClick={() => handleCopyItem(font, id)}
                         className="group relative p-3.5 bg-slate-50 rounded-xl border border-slate-200 font-medium text-slate-700 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer flex justify-between items-center w-full overflow-hidden"
                       >
@@ -180,10 +179,10 @@ export function ResultTabs({ design }: ResultTabsProps) {
                   ].map((attr) => {
                     const isCopied = copiedItem === attr.id;
                     return (
-                      <div 
+                      <div
                         key={attr.id}
                         onClick={() => handleCopyItem(attr.value, attr.id)}
-                        className="group flex flex-col p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer relative"
+                        className="group flex flex-col p-4 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer relative h-full"
                       >
                         <div className="flex items-center mb-2 pr-6">
                           <span className="text-xs font-semibold text-slate-500">{attr.label}</span>
@@ -195,10 +194,12 @@ export function ResultTabs({ design }: ResultTabsProps) {
                             </div>
                           </div>
                         </div>
-                        
-                        <span className="text-sm font-mono text-slate-800 break-words line-clamp-4" title={attr.value}>
-                          {attr.value}
-                        </span>
+
+                        <div className="flex-1">
+                          <span className="text-sm font-mono text-slate-800 break-words" title={attr.value}>
+                            {attr.value}
+                          </span>
+                        </div>
 
                         <div className="absolute top-3.5 right-3.5">
                           {isCopied ? (
@@ -220,13 +221,13 @@ export function ResultTabs({ design }: ResultTabsProps) {
         {activeTab === 'prompt' && (
           <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-sm font-bold text-slate-800">设计提示词</h3>
-              <button 
+              <h3 className="text-sm font-bold text-slate-800">AI 代码复现指令</h3>
+              <button
                 onClick={handleCopyPrompt}
-                className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
+                className="flex items-center space-x-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-lg text-sm font-semibold transition-colors shadow-sm"
               >
-                {copiedPrompt ? <Check className="w-4 h-4 text-emerald-300" /> : <Copy className="w-4 h-4" />}
-                <span>{copiedPrompt ? '已复制！' : '复制提示词'}</span>
+                {copiedPrompt ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+                <span>{copiedPrompt ? '已复制！' : '设计复现 AI 指令'}</span>
               </button>
             </div>
             <div className="flex-1 overflow-y-auto bg-slate-900 rounded-xl p-6 text-slate-300 font-mono text-sm leading-relaxed shadow-inner border border-slate-800">
