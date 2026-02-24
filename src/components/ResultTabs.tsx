@@ -183,7 +183,7 @@ export function ResultTabs({ design }: ResultTabsProps) {
                       <div 
                         key={attr.id}
                         onClick={() => handleCopyItem(attr.value, attr.id)}
-                        className="group flex flex-col p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer relative"
+                        className="group flex flex-col p-3.5 bg-slate-50 rounded-xl border border-slate-200 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all cursor-pointer relative h-full"
                       >
                         <div className="flex items-center mb-2 pr-6">
                           <span className="text-xs font-semibold text-slate-500">{attr.label}</span>
@@ -196,9 +196,11 @@ export function ResultTabs({ design }: ResultTabsProps) {
                           </div>
                         </div>
                         
-                        <span className="text-sm font-mono text-slate-800 break-words line-clamp-4" title={attr.value}>
-                          {attr.value}
-                        </span>
+                        <div className="flex-1">
+                          <span className="text-sm font-mono text-slate-800 break-words" title={attr.value}>
+                            {attr.value}
+                          </span>
+                        </div>
 
                         <div className="absolute top-3.5 right-3.5">
                           {isCopied ? (

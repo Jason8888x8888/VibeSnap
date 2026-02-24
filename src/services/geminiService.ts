@@ -25,7 +25,7 @@ export async function extractDesignFromImage(base64Image: string, mimeType: stri
         3. fonts: 推测最接近的 Google Font 名称（保留英文名称）。
         4. visualAttributes: 提取圆角 (borderRadius，如 "0.5rem", "9999px")、阴影 (shadows，具体 CSS 阴影值)、边框 (borders，CSS border 值) 和具体的布局逻辑与间距策略 (spacing，中文描述如 "采用 16px 基准网格系统，营造呼吸感")。
         5. interaction: 请基于视觉特征“脑补”出最优雅的交互反馈。推断 Framer Motion 的交互物理参数。提供刚度 (stiffness, 如 100-500)、阻尼 (damping, 如 10-40) 和持续时间 (duration, 秒为单位)。
-        6. summary: 100字以内的中文设计流派总结（提炼其核心精神）。
+        6. summary: 对视觉风格和氛围的简短总结（100字以内的中文）。
         7. keywords: 3-5 个描述该风格的关键词（中文）。
         8. vibePrompt: 一段可直接复制给 Cursor/Claude 的复现指令。包含 Tailwind 配置建议、Framer Motion 参数以及基于提取的设计规范的组件逻辑指南。（直接使用中文撰写说明，代码和配置部分使用英文）。`,
       },
