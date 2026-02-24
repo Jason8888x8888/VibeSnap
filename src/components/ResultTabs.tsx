@@ -195,6 +195,8 @@ export function ResultTabs({ design }: ResultTabsProps) {
                           </div>
                         </div>
 
+
+
                         <div className="flex-1">
                           <span className="text-sm font-mono text-slate-800 break-words" title={attr.value}>
                             {attr.value}
@@ -218,25 +220,27 @@ export function ResultTabs({ design }: ResultTabsProps) {
           </div>
         )}
 
-        {activeTab === 'prompt' && (
-          <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-sm font-bold text-slate-800">AI 代码复现指令</h3>
-              <button
-                onClick={handleCopyPrompt}
-                className="flex items-center space-x-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-lg text-sm font-semibold transition-colors shadow-sm"
-              >
-                {copiedPrompt ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
-                <span>{copiedPrompt ? '已复制！' : '设计复现 AI 指令'}</span>
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto bg-slate-900 rounded-xl p-6 text-slate-300 font-mono text-sm leading-relaxed shadow-inner border border-slate-800">
-              <div className="markdown-body prose prose-invert max-w-none">
-                <ReactMarkdown>{design.vibePrompt}</ReactMarkdown>
+        {
+          activeTab === 'prompt' && (
+            <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-bold text-slate-800">AI 代码复现指令</h3>
+                <button
+                  onClick={handleCopyPrompt}
+                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-lg text-sm font-semibold transition-colors shadow-sm"
+                >
+                  {copiedPrompt ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+                  <span>{copiedPrompt ? '已复制！' : '设计复现 AI 指令'}</span>
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto bg-slate-900 rounded-xl p-6 text-slate-300 font-mono text-sm leading-relaxed shadow-inner border border-slate-800">
+                <div className="markdown-body prose prose-invert max-w-none">
+                  <ReactMarkdown>{design.vibePrompt}</ReactMarkdown>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
   );
