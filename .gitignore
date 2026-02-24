@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local personal docs and prototypes
+01_项目文档/
+02_概念原型/
+03_历史版本/
